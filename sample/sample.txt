@@ -1,0 +1,9 @@
+System: Windows
+Model Name: PLUTO-PC
+Windows: 10
+Version: 10.0.19045
+Machine: AMD64
+Processor: Intel64 Family 6 Model 42 Stepping 7, GenuineIntel
+RAM: 12 GB
+Python Version: 3.12.5
+Date: 2024-08-08

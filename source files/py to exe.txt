@@ -1,0 +1,1 @@
+pyinstaller --onefile --noconsole --icon="C:\\Users\\AJAY KUMAR M\\Desktop\\system info\\source files\\icon\\Applogo.ico" system_info.py
