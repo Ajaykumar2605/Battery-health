@@ -3,6 +3,8 @@ from PIL import Image, ImageTk
 import psutil
 import threading
 import time
+import requests
+from io import BytesIO
 
 class BatteryApp:
     def __init__(self, root):
@@ -53,28 +55,28 @@ class BatteryApp:
     def load_images(self):
         """ Load and display application logo and system image """
         try:
-            # Define image paths
-            app_logo_path = r"C:\Users\AJAY KUMAR M\Desktop\Battery Health\source files\icons\battery.png"
-            app_system_path = app_logo_path
+            app_logo_url = "https://github.com/Ajaykumar2605/Battery-health/blob/main/source%20files/icons/battery.png?raw=true"
+
+            # Download images
+            response_logo = requests.get(app_logo_url)
+            response_logo.raise_for_status()
 
             # Load and resize images
-            app_logo = Image.open(app_logo_path).resize((150, 150))
-            app_system = Image.open(app_system_path).resize((160, 150))
+            app_logo = Image.open(BytesIO(response_logo.content)).resize((150, 150))
 
-            # Convert images to PhotoImage
+            # Convert image to PhotoImage
             self.app_logo_photo = ImageTk.PhotoImage(app_logo)
-            self.app_system_photo = ImageTk.PhotoImage(app_system)
 
-            # Create labels to display images
+            # Create label to display image
             self.app_logo_label = tk.Label(self.root, image=self.app_logo_photo)
             self.app_logo_label.pack(pady=10)
 
             # Set window icon
-            self.root.iconphoto(False, self.app_system_photo)
+            self.root.iconphoto(False, self.app_logo_photo)
 
-        except FileNotFoundError as e:
-            print(f"Error loading image: {e}")
-            # Fallback if images are not found
+        except requests.RequestException as e:
+            print(f"Error downloading image: {e}")
+            # Fallback if image cannot be downloaded
             self.app_logo_label = tk.Label(self.root, text="Logo not found")
             self.app_logo_label.pack(pady=10)
 
