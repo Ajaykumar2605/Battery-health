@@ -13,3 +13,7 @@ A desktop application built with Python and Tkinter that provides detailed infor
 - Python 3.x
 - `psutil` library (for retrieving battery statistics)
 - Tkinter (included with most Python installations)
+- Openpyxl
+- Xlrd
+- Pillow
+- Requests 
