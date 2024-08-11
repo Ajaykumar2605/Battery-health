@@ -1,0 +1,1 @@
+pyinstaller --onefile --noconsole --icon="C:\\Users\\AJAY KUMAR M\\Desktop\\Battery Health\\source files\\icons\\Appicon.ico" Battery_health.py
